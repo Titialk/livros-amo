@@ -1,0 +1,287 @@
+/* ==========================================================
+   ESTILOS BOOK GIRL - FLASHCARDS FOFINHOS 🌸📚
+   ========================================================== */
+
+   :root {
+    --bg-color: #fff5f7;
+    --card-front: #ffffff;
+    --card-back: #fff0f3;
+    --primary-pink: #ff85a1;
+    --secondary-pink: #ffb3c1;
+    --accent-purple: #d8b4fe;
+    --text-color: #594a4e;
+    --shadow: 0 10px 25px rgba(255, 133, 161, 0.15);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    background-color: var(--bg-color);
+    background-image: radial-gradient(#ffccd5 1px, transparent 1px);
+    background-size: 24px 24px;
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem 1rem;
+    position: relative;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+    z-index: 2;
+}
+
+header h1 {
+    font-family: 'Caveat', cursive;
+    font-size: 3.5rem;
+    color: var(--primary-pink);
+    text-shadow: 2px 2px 0px #fff;
+    margin-bottom: 0.5rem;
+}
+
+header p {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #8c7378;
+}
+
+header p i {
+    color: var(--primary-pink);
+}
+
+/* Container dos Flashcards */
+.flashcards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.5rem;
+    justify-content: center;
+    max-width: 1200px;
+    width: 100%;
+    margin-bottom: 2rem;
+    z-index: 2;
+}
+
+/* Estilo do Flashcard (Flip 3D) */
+.flashcard {
+    width: 320px;
+    height: 520px;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.flashcard-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s cubic-bezier(0.4, 0.2, 0.2, 1);
+    transform-style: preserve-3d;
+    box-shadow: var(--shadow);
+    border-radius: 20px;
+}
+
+.flashcard.flipped .flashcard-inner {
+    transform: rotateY(180deg);
+}
+
+.flashcard-front, .flashcard-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 20px;
+    border: 3px solid #ffccd5;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1.8rem;
+}
+
+/* Frente do Cartão */
+.flashcard-front {
+    background-color: var(--card-front);
+}
+
+.book-img-container {
+    width: 100%;
+    height: 310px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    position: relative;
+}
+
+.book-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.book-img-container:hover img {
+    transform: scale(1.05);
+}
+
+.book-img-container::after {
+    content: "Clique na capa para comprar 🛒";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 133, 161, 0.9);
+    color: white;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 4px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.book-img-container:hover::after {
+    opacity: 1;
+}
+
+.front-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #594a4e;
+    margin-top: 1rem;
+}
+
+.tap-hint {
+    font-size: 0.85rem;
+    color: var(--primary-pink);
+    font-weight: 600;
+    background: #fff0f3;
+    padding: 6px 12px;
+    border-radius: 20px;
+    display: inline-block;
+    align-self: center;
+}
+
+/* Verso do Cartão */
+.flashcard-back {
+    background-color: var(--card-back);
+    transform: rotateY(180deg);
+    text-align: left;
+    justify-content: flex-start;
+    overflow-y: auto;
+}
+
+.flashcard-back h3 {
+    font-family: 'Caveat', cursive;
+    font-size: 2rem;
+    color: var(--primary-pink);
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.trope-tag {
+    background: var(--accent-purple);
+    color: #4c3d59;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 10px;
+    display: inline-block;
+    margin-bottom: 0.8rem;
+}
+
+.flashcard-back p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #6e5b60;
+    margin-bottom: 1.2rem;
+}
+
+.buy-btn {
+    background-color: var(--primary-pink);
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(255, 133, 161, 0.3);
+    transition: background 0.2s, transform 0.2s;
+    margin-top: auto;
+    display: block;
+}
+
+.buy-btn:hover {
+    background-color: #ff6b8b;
+    transform: translateY(-2px);
+}
+
+footer {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #9c848a;
+    margin-top: 1rem;
+    z-index: 2;
+}
+
+footer i {
+    color: #ff5c8a;
+}
+
+/* ==========================================================
+   EFEITO DE CORAÇÕES SUBINDO 💖 (FIXED)
+   ========================================================== */
+.hearts-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0; /* Fica atrás de tudo mas visível no fundo */
+}
+
+.floating-heart {
+    position: absolute;
+    bottom: -50px;
+    color: rgba(255, 105, 135, 0.5); /* Tom de rosa mais vivo */
+    animation: floatUp 6s linear infinite;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) scale(0.6) rotate(0deg);
+        opacity: 0;
+    }
+    20% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(-110vh) scale(1.3) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2.8rem;
+    }
+    .flashcard {
+        width: 100%;
+        max-width: 340px;
+    }
+}
